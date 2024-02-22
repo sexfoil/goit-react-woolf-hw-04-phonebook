@@ -1,0 +1,48 @@
+.form {
+  width: 300px;
+  display: flex;
+  border: 1px solid tomato;
+  background-color: bisque;
+  flex-direction: column;
+  row-gap: 16px;
+  padding: 8px 8px;
+}
+
+.inputs {
+  display: flex;
+  flex-direction: column;
+  row-gap: 8px;
+}
+
+.inputs input {
+  font-size: 16px;
+  padding: 4px 8px;
+}
+
+.label {
+  font-size: 16px;
+}
+
+.btn {
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: antiquewhite;
+  background-color: coral;
+  border: 2px solid coral;
+  border-radius: 8px;
+  padding: 8px 16px;
+  margin: 0 auto 0 0;
+}
+
+.btn:hover,
+.btn:focus {
+  background-color: tomato;
+  border: 2px solid tomato;
+}
+
+.btn:active {
+  background-color: #e42504;
+  border: 2px solid #e42504;
+  font-size: 15px;
+}
