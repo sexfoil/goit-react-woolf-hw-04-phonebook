@@ -6,24 +6,18 @@ import ContactList from './ContactList/ContactList';
 const App = () => {
   const CONTACTS_LS_KEY = 'contacts';
 
-  const [isMounted, setIsMounted] = useState(false);
-  const [contacts, setContacts] = useState([]);
+  const getContactsFromLS = () => {
+    const savedContacts = localStorage.getItem(CONTACTS_LS_KEY);
+    return savedContacts ? JSON.parse(savedContacts) : [];
+  };
+
+  const [contacts, setContacts] = useState(getContactsFromLS());
   const [filter, setFilter] = useState('');
 
   useEffect(() => {
-    const savedContacts = localStorage.getItem(CONTACTS_LS_KEY);
-    if (savedContacts) {
-      setContacts(JSON.parse(savedContacts));
-    }
-    setIsMounted(true);
-  }, []);
-
-  useEffect(() => {
-    if (isMounted) {
-      const contactsJsonString = JSON.stringify(contacts);
-      localStorage.setItem(CONTACTS_LS_KEY, contactsJsonString);
-    }
-  }, [contacts, isMounted]);
+    const contactsJsonString = JSON.stringify(contacts);
+    localStorage.setItem(CONTACTS_LS_KEY, contactsJsonString);
+  }, [contacts]);
 
   const addContact = contact => {
     if (hasContact(contact.name)) {
